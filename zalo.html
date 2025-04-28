@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Đang mở Zalo...</title>
+  <script>
+    function openApp() {
+      var zaloLink = "zalo://"; 
+      var fallbackLink = "https://zalo.me/0792011737"; // Link zalo.me của bạn
+      var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+      if (/android/i.test(userAgent)) {
+        window.location.href = zaloLink;
+        setTimeout(function() {
+          window.location.href = fallbackLink;
+        }, 500);
+      } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        window.location.href = zaloLink;
+        setTimeout(function() {
+          window.location.href = fallbackLink;
+        }, 500);
+      } else {
+        window.location.href = fallbackLink;
+      }
+    }
+  </script>
+</head>
+<body onload="openApp()">
+  <p>Đang mở Zalo...</p>
+</body>
+</html>
