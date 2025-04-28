@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Đang mở Facebook...</title>
+  <script>
+    function openApp() {
+      var fbLink = "fb://page/kenhbachau"; // deep link page username
+      var fallbackLink = "https://facebook.com/kenhbachau"; 
+      var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+      if (/android/i.test(userAgent)) {
+        window.location.href = fbLink;
+        setTimeout(function() {
+          window.location.href = fallbackLink;
+        }, 500);
+      } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        window.location.href = fbLink;
+        setTimeout(function() {
+          window.location.href = fallbackLink;
+        }, 500);
+      } else {
+        window.location.href = fallbackLink;
+      }
+    }
+  </script>
+</head>
+<body onload="openApp()">
+  <p>Đang mở Facebook...</p>
+</body>
+</html>
